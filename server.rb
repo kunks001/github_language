@@ -1,8 +1,9 @@
 require 'sinatra'
+require 'haml'
 
 class GithubLanguage < Sinatra::Base
 
 	get '/' do
-		"hello world"
+		haml :index
 	end
 end
