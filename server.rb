@@ -12,10 +12,20 @@ class GithubLanguage < Sinatra::Base
 	post '/' do
 		@user = params[:user]
 		repos = Octokit.repositories(@user)
-		# binding.pry
-		language_obj = {}
+		# # binding.pry
 
-		repos.each do |repo|
+	  language_obj = count_repo_languages(repos)
+
+	  languages = compile_languages_hash(language_obj)
+
+    @languages = languages.to_json
+    # raise languages.inspect
+    haml :index
+  end
+
+  def count_repo_languages(repos)
+  	language_obj = {}
+  	repos.each do |repo|
     	# sometimes language can be nil 
 	    if repo.language != nil
 	      if !language_obj[repo.language]
@@ -25,16 +35,15 @@ class GithubLanguage < Sinatra::Base
 	      end
 	    end
 	  end
+	  language_obj
+	end
 
-    languages = []
+	def compile_languages_hash(language_obj)
+		languages = []
     language_obj.each do |lang, count|
       languages.push :language => lang, :count => count
     end
-
-    @languages = languages.to_json
-    # raise languages.inspect
-    haml :index
-  end
+    languages
+	end
 
 end
-
