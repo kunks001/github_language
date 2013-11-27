@@ -10,6 +10,6 @@ class GithubLanguage < Sinatra::Base
   require_relative './helpers/github_language'
   require_relative './helpers/application'
 
-  include GitLanguageHelpers
-  include ApplicationHelpers
+  include GitLanguageHelper
+  include ApplicationHelper
 end

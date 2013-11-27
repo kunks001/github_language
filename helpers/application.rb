@@ -1,4 +1,4 @@
-module ApplicationHelpers
+module ApplicationHelper
 	def self.included(mod)
     ::Hash.class_eval do
     	def ninvert

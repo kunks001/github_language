@@ -1,4 +1,4 @@
-module GitLanguageHelpers
+module GitLanguageHelper
   def get_json(uri)
     response = Net::HTTP.get_response(URI(uri))
     JSON.parse(response.body)
