@@ -11,6 +11,7 @@ class GithubLanguage < Sinatra::Base
 
 	post '/' do
 		@user = params[:user]
+		# JSON.load("test")
 		repos = Octokit.repositories(@user)
 		# # binding.pry
 
@@ -27,11 +28,11 @@ class GithubLanguage < Sinatra::Base
   	language_obj = {}
   	repos.each do |repo|
     	# sometimes language can be nil 
-	    if repo.language != nil
-	      if !language_obj[repo.language]
-	        language_obj[repo.language] = 1
+	    if repo['language'] != nil
+	      if !language_obj[repo['language']]
+	        language_obj[repo['language']] = 1
 	      else
-	        language_obj[repo.language] += 1
+	        language_obj[repo['language']] += 1
 	      end
 	    end
 	  end
@@ -46,4 +47,4 @@ class GithubLanguage < Sinatra::Base
     languages
 	end
 
-end
+end	
