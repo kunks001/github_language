@@ -2,7 +2,6 @@ require 'sinatra'
 require 'haml'
 require 'net/http'
 require 'json'
-require 'octokit'
 
 class GithubLanguage < Sinatra::Base
 
@@ -11,5 +10,4 @@ class GithubLanguage < Sinatra::Base
   require_relative './helpers/application'
 
   include GitLanguageHelper
-  include ApplicationHelper
 end
