@@ -1,12 +1,5 @@
-class Hash
-	def ninvert
-    inject({}) { |h,(k,v)| (h[v] ||= []) << k; h }
-  end
-end
-
 class Array
 	def get_mode
-    (inject(Hash.new(0)) { |h,e| h[e] += 1; h }.ninvert.max || 
-    [[]]).last
+    group_by{ |e| e }.map{ |k,v| [k,v.count] }.max{ |a,b| a[1] <=> b[1] }.shift
   end
 end
