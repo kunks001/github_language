@@ -1,29 +1,20 @@
 require_relative './spec_helper'
 
-# module TestModule
-# 	def self.putsit
-# 		raise "calling some server"
-# 	end
-# end
-
-def json_response(file_name)
-  JSON.parse(File.open(File.dirname(__FILE__) + '/support/fixtures/' + file_name, 'rb').read)
+def response(file_name)
+  File.open(File.dirname(__FILE__) + '/support/fixtures/' + file_name, 'rb').read
 end
 
 describe GithubLanguage do
 
-	# it 'sjdlfk' do
-	# 	TestModule.stub(:putsit)
-	# 	expect{TestModule.putsit}.not_to raise_error
-	# 	raise TestModule.putsit.inpsect
-	# end
+	context 'after submitting a username' do
 
-	it 'sjdlfk' do
-		Octokit.stub(:repositories=>json_response('user_repos.json') )
-		post '/'
-		last_response.should.be.ok
-    expect(JSON.parse(last_response.body)).to include 'Hello World'
-		# expect().to eq 'ruby'
+		it 'returns a JSON object containing a language count' do
+			Net::HTTP.stub(get_response: double(:response, body: response('user_repos.json')))
+			post '/'
+			expect(last_response).to be_ok
+	    expect(last_response.body).to include 'Ruby'
+	  end
+
 	end
 
 end

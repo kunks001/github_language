@@ -1,13 +1,14 @@
 %form{ :action => "/", :method => "post"}
   %fieldset
     %li
-      %label{:for => "user"} User:
-      %input{:type => "text", :name => "user", :class => "text"}
+      %label{:for => "username"} Username:
+      %input{:type => "text", :name => "username", :class => "text"}
     %input{:type => "submit", :value => "Send", :class => "button"}
 
-#language
+- if @languages
+  = @languages
 
-:javascript
-  var languages = JSON.parse('#{@languages}');
-  var lang = _.max(languages, function(language){ return language.count; });
-  document.getElementById('language').innerHTML = lang.language;
+/ :javascript
+/   var languages = JSON.parse('#{@languages}');
+/   var lang = _.max(languages, function(language){ return language.count; });
+/   document.getElementById('language').innerHTML = lang.language;
