@@ -1,4 +1,4 @@
-require_relative './helpers/github_language'
+require_relative '../helpers/github_language'
 
 class GithubLanguage < Sinatra::Base
   include GitLanguageHelpers
