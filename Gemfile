@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'sinatra',     '~> 1.3.5'
 gem 'thin'
 gem 'haml'
-gem 'octokit'
 gem 'json'
 
 group :development do
