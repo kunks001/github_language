@@ -10,9 +10,9 @@ describe GithubLanguage do
 
     it 'returns a JSON object containing a language count' do
       Net::HTTP.stub(get_response: double(:response, body: response('user_repos.json')))
-      post '/'
+      post '/', {username: "kunks001"}
       expect(last_response).to be_ok
-      expect(last_response.body).to include 'Ruby'
+      expect(last_response.body).to include "kunks001's favourite language is Ruby!"
     end
 
     it "returns an error if user doesn't exist" do
