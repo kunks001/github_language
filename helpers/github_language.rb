@@ -11,7 +11,12 @@ module GitLanguageHelper
     if !repos.is_a?(Array)
       "Sorry, that user doesn't exist. Please try again"
     else
-      repos.map {|repo| repo['language'] }.get_mode
+      get_mode_of(repos)
     end
+  end
+
+  def get_mode_of(repos)
+    favourite_language = repos.map {|repo| repo['language'] }.get_mode
+    favourite_language == nil ? "Oops, that user doesn't seem to have a favourite language!" : favourite_language
   end
 end

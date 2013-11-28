@@ -22,6 +22,13 @@ describe GithubLanguage do
       expect(last_response.body).to include "Sorry, that user doesn't exist. Please try again"
     end
 
+    it "returns an error if the favourite repo is 'nil'" do
+      Net::HTTP.stub(get_response: double(:response, body: response('nil_as_language.json')))
+      post '/'
+      expect(last_response).to be_ok
+      expect(last_response.body).to include "Oops, that user doesn't seem to have a favourite language!"
+    end
+
   end
 
 end
