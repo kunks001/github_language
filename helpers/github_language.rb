@@ -9,9 +9,9 @@ module GitLanguageHelper
     repos = get_json(uri)
 
     if !repos.is_a?(Array)
-    	"Sorry, that user doesn't exist. Please try again"
+      "Sorry, that user doesn't exist. Please try again"
     else
-    	repos.map {|repo| repo['language'] }.get_mode
-	  end
+      repos.map {|repo| repo['language'] }.get_mode
+    end
   end
 end

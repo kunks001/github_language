@@ -6,12 +6,12 @@ gem 'haml'
 gem 'json'
 
 group :development do
-	gem 'shotgun'
-	gem 'pry-debugger'
+  gem 'shotgun'
+  gem 'pry-debugger'
 end
 
 group :test do
-	gem 'rspec'
-	gem 'capybara'
-	gem 'webmock'
+  gem 'rspec'
+  gem 'capybara'
+  gem 'webmock'
 end
