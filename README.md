@@ -6,7 +6,7 @@ build a simple web or command line application, which should allow users to ente
 
 ##My Response
 
-Given the choice of a command line or web application, I opted for the web, using Sinatra as a lightweight framework. I used Ruby's net::http class over github's Octokit api wrapper as I didn't require authentication, testing using webmocks and rspec fixtures to control the testing environment. 
+Given the choice of a command line or web application, I opted for the web, using Sinatra as a lightweight framework. I used Ruby's net::http class over github's Octokit api wrapper as I didn't require authentication, testing using webmocks and rspec fixtures to control the testing environment. If the application were to be extended I would switch to octokit as otherwise Github's rate-limit would prevent more than 50 requests per hour.
 
 The application covers some edge cases, including if the username submitted by the user doesn't exist or if github returns 'nil' as a favourite language. However given more time I would also include:
 
