@@ -1,9 +1,17 @@
-%form{ :action => "/", :method => "post"}
-  %fieldset
-    %li
-      %label{:for => "username"} Username:
-      %input{:type => "text", :name => "username", :class => "text"}
-    %input{:type => "submit", :value => "Send", :class => "button"}
+.container
 
-- if @languages
-  = @languages
+  %h2
+    Github User Languages
+  %h3
+    What's their favourite? Enter a name and find out!
+
+  %form{ :action => "/", :method => "post"}
+    %fieldset
+      %li
+        %label{:for => "username"} Username:
+        %input{:type => "text", :name => "username", :class => "text"}
+      %input{:type => "submit", :value => "Send", :class => "button"}
+
+  #result
+    - if @languages
+      = @languages
